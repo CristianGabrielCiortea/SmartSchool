@@ -16,3 +16,11 @@ C#
 WPF (Windows Presentation Foundation)
 MVVM (Model-View-ViewModel) design pattern
 SQL database
+
+User Roles:
+
+Student: Students have the ability to view their own grades and attendance records, allowing them to track their academic progress and attendance history.
+
+Teacher: Teachers can not only access their students' profiles and attendance records but also have the privilege to add grades and mark attendance for the classes they teach. This empowers them to efficiently manage their courses and provide timely feedback to students.
+
+Form Teacher: Form teachers have an additional responsibility to justify student absences, ensuring that there is proper documentation for any missed classes. This feature helps maintain transparency in the school's attendance and discipline records.
