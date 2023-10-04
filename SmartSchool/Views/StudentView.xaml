@@ -1,0 +1,98 @@
+﻿<Window x:Class="SmartSchool.Views.StudentView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SmartSchool.Views" xmlns:i="http://schemas.microsoft.com/xaml/behaviors" xmlns:viewmodels="clr-namespace:SmartSchool.ViewModels"
+        mc:Ignorable="d"
+        Title="StudentView" Height="600" Width="1250">
+    <Window.DataContext>
+        <viewmodels:StudentViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="300"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Subjects:" FontSize="15"/>
+            <ScrollViewer Grid.Row="1" Width="300" Height="auto">
+                <DataGrid x:Name="Subjects"
+                                  ItemsSource="{Binding Subjects}"
+                                  SelectedItem="{Binding SelectedSubject}"
+                                  ColumnWidth="*"
+                                  CanUserAddRows="False"
+                          AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="SubjectId" Binding="{Binding SubjectId}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Name}" IsReadOnly="True"/>
+                    </DataGrid.Columns>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding CalculateStudentAverageForSubjectCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </DataGrid>
+            </ScrollViewer>
+            <TextBlock Grid.Row="2" Text="{Binding Average}" FontSize="15"/>
+        </Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="300"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Grades:" FontSize="15"/>
+            <ScrollViewer Grid.Row="1" Width="300" Height="auto">
+                <DataGrid x:Name="Grades"
+                                  ItemsSource="{Binding Grades}"
+                                  ColumnWidth="*"
+                                  CanUserAddRows="False">
+                </DataGrid>
+            </ScrollViewer>
+        </Grid>
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="300"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Grades:" FontSize="15"/>
+            <ScrollViewer Grid.Row="1" Width="300" Height="auto">
+                <DataGrid x:Name="Absences"
+                                  ItemsSource="{Binding Absences}"
+                                  ColumnWidth="*"
+                                  CanUserAddRows="False">
+                </DataGrid>
+            </ScrollViewer>
+        </Grid>
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="300"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Text="Grades:" FontSize="15"/>
+            <ScrollViewer Grid.Row="1" Width="300" Height="auto">
+                <DataGrid x:Name="TeachingMaterials"
+                                  ItemsSource="{Binding TeachingMaterials}"
+                                  ColumnWidth="*"
+                                  CanUserAddRows="False">
+                </DataGrid>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Window>
